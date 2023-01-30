@@ -26,7 +26,7 @@ module.exports = function toReadable (number) {
     const teven = {
         num20 : ['twenty', '20'],
         num30 : ['thirty', '30'],
-        num40 : ['fourty', '40'],
+        num40 : ['forty', '40'],
         num50 : ['fifty', '50'],
         num60 : ['sixty', '60'],
         num70 : ['seventy', '70'],
@@ -76,7 +76,7 @@ module.exports = function toReadable (number) {
             };
         });
         values.forEach(item => {
-            if(numberStr[2] === item[1]){
+            if(numberStr[2] === item[1] && numberStr[2] != '0'){
                 result = result + " " + item[0];
             };
         });	
@@ -92,7 +92,7 @@ module.exports = function toReadable (number) {
                 result = result + " " + item[0];
             }
         });	
-    } else {
+    } else  if (number >= 100 && numberStr.length === 3){
         values.forEach((item) => {
             if(numberStr[0] === item[1]){
                 result = item[0] + " " + "hundred";
@@ -110,5 +110,7 @@ module.exports = function toReadable (number) {
             };
         });
     };
+
+
     return result;
 }
